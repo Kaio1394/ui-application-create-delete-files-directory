@@ -70,6 +70,10 @@ Deleting a Directory:
 3. Select the Directory radio button.
 4. Click "Delete".
 
+## **Requirements**
+- Qt Creator 6.0 or higher.
+- C++ compiler
+
 ### How to Use This Script
 1. Copy the above content and save it as `README.md` in the root of your project.
 2. Replace the placeholders (`path/to/...`) with the correct paths to your images.
