@@ -1,13 +1,53 @@
+# **File and Directory Manager**
 
-![image](https://github.com/user-attachments/assets/19631481-24af-4f65-9690-5c4a925fb1f5)
+This project provides a GUI for managing files and directories using Qt. The application includes two main tabs: **Create** and **Delete**, each with its specific functionality for creating or deleting files and directories.
 
-Create tab:
+---
 
-![image](https://github.com/user-attachments/assets/d2786860-5508-41b5-97f2-b8ec9550d880)
+## **Features**
 
-Delete tab:
+- Create files or directories by specifying a path.
+- Delete files or directories by specifying a path.
+- Intuitive tab-based interface to toggle between creation and deletion modes.
 
-![image](https://github.com/user-attachments/assets/2e39d818-8b01-40e4-b3c7-b2bbce846998)
+---
 
+## **Interface Overview**
 
+### **1. Create Tab**
 
+The **Create** tab allows users to create files or directories.
+
+#### **Components:**
+- **Label:** *"Path"*: Indicates the path input field.
+- **Line Edit:** Input the path of the file or directory to be created.
+- **Radio Buttons:**
+  - **File:** Select to create a file.
+  - **Directory:** Select to create a directory.
+- **Button:** *"Create"* to execute the creation process.
+
+![Create Tab](path/to/create_tab_image.png)
+
+---
+
+### **2. Delete Tab**
+
+The **Delete** tab allows users to delete files or directories.
+
+#### **Components:**
+- **Label:** *"Path"*: Indicates the path input field.
+- **Line Edit:** Input the path of the file or directory to be deleted.
+- **Radio Buttons:**
+  - **File:** Select to delete a file.
+  - **Directory:** Select to delete a directory.
+- **Button:** *"Delete"* to execute the deletion process.
+
+![Delete Tab](path/to/delete_tab_image.png)
+
+---
+
+## **Setup**
+
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
