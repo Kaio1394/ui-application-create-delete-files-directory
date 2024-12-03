@@ -163,6 +163,12 @@ std::vector<std::string> CreaterFilesPage::splitString(const std::string& str, c
     return std::vector<std::string>(begin, end);
 }
 
+void CreaterFilesPage::createLoopFiles(std::vector<std::string> list){
+    for(std::string item: list){
+        createFile(QString::fromStdString(item));
+    }
+}
+
 void CreaterFilesPage::on_btnAction_clicked()
 {
     QString editText = ui->paths->toPlainText();
@@ -172,7 +178,7 @@ void CreaterFilesPage::on_btnAction_clicked()
 
     std::vector<std::string> vectorSplit = splitString(editText.toStdString(), "\n");
     if(checkBoxActivate("Create")){
-
+        createLoopFiles(vectorSplit);
     }else{
 
     }

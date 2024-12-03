@@ -22,6 +22,8 @@ public:
     void writeStatusBar(QString, QString);
     bool checkBoxActivate(QString);
     std::vector<std::string> splitString(const std::string& str, const std::string& delimiter);
+    void deleteLoopFiles(std::vector<std::string>);
+    void createLoopFiles(std::vector<std::string>);
 private slots:
     void on_create_clicked();
 
