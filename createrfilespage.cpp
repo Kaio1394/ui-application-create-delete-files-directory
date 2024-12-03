@@ -3,6 +3,8 @@
 #include "QDir"
 #include "QFile"
 #include "QMessageBox"
+#include <vector>
+#include <regex>
 
 CreaterFilesPage::CreaterFilesPage(QWidget *parent)
     : QMainWindow(parent)
@@ -15,6 +17,14 @@ CreaterFilesPage::CreaterFilesPage(QWidget *parent)
 CreaterFilesPage::~CreaterFilesPage()
 {
     delete ui;
+}
+
+bool CreaterFilesPage::checkBoxActivate(QString textComboBox){
+    QString currentTextComboBox = ui->comboBoxOpt->currentText();
+    if(currentTextComboBox == textComboBox){
+        return true;
+    }
+    return false;
 }
 
 bool CreaterFilesPage::createFile(QString path){
@@ -124,6 +134,47 @@ void CreaterFilesPage::on_delete_btn_clicked()
         else{
             writeStatusBar("Arquivo/diretório[" + path +"] foi deletado com sucesso!", "green");
         }
+    }
+}
+
+
+void CreaterFilesPage::on_pushButton_clicked()
+{
+    QWidget *thirdTab = ui->tabWidget->widget(2);
+
+    if (thirdTab) {
+        QLineEdit *newLineEdit = new QLineEdit(thirdTab);
+
+        newLineEdit->setGeometry(10, nextY, thirdTab->width() - 20, 30);
+
+        nextY += 40;
+
+        newLineEdit->show();
+    } else {
+        qDebug() << "Terceira aba não encontrada.";
+    }
+}
+
+std::vector<std::string> CreaterFilesPage::splitString(const std::string& str, const std::string& delimiter) {
+    std::regex re(delimiter);
+    std::sregex_token_iterator begin(str.begin(), str.end(), re, -1);
+    std::sregex_token_iterator end;
+
+    return std::vector<std::string>(begin, end);
+}
+
+void CreaterFilesPage::on_btnAction_clicked()
+{
+    QString editText = ui->paths->toPlainText();
+    if(editText.isEmpty()){
+        writeStatusBar("Caminho contendo os paths está vazio!", "red");
+    }
+
+    std::vector<std::string> vectorSplit = splitString(editText.toStdString(), "\n");
+    if(checkBoxActivate("Create")){
+
+    }else{
+
     }
 }
 
