@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icons/bot.ico</file>
+        <file>icons/Folder-icon.ico</file>
+    </qresource>
+</RCC>

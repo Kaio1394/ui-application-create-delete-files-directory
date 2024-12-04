@@ -10,7 +10,8 @@ ResultPage::ResultPage(QWidget *parent)
     modelFailed(new QStringListModel(this))
 {
     ui->setupUi(this);
-
+    this->setWindowIcon(QIcon(":/icons/Folder-icon.ico"));
+    this->setWindowTitle("Result");
     ui->listView_complete->setModel(modelComplete);
     ui->listView_not_complete->setModel(modelFailed);
 
@@ -19,7 +20,6 @@ ResultPage::ResultPage(QWidget *parent)
 
     modelComplete->setStringList(qStringListMakeAction);
     modelFailed->setStringList(qStringListNotMakeAction);
-
 }
 
 QStringList ResultPage::convertToQStringList(const std::vector<std::string>& list) {
