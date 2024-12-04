@@ -1,17 +1,22 @@
 #include "createrfilespage.h"
+#include "global_data.h"
 #include "ui_createrfilespage.h"
 #include "QDir"
 #include "QFile"
 #include "QMessageBox"
 #include <vector>
 #include <regex>
+#include "resultpage.h"
 
 CreaterFilesPage::CreaterFilesPage(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::CreaterFilesPage)
 {
     this->setFixedSize(400, 300);
+
     ui->setupUi(this);
+    QLabel *rightLabel = new QLabel("Version: 1.0.0", this);
+    ui->statusbar->addPermanentWidget(rightLabel);
 }
 
 CreaterFilesPage::~CreaterFilesPage()
@@ -35,6 +40,11 @@ bool CreaterFilesPage::createFile(QString path){
 
     file.close();
     return true;
+}
+
+bool CreaterFilesPage::validateCombobox(QString label, QComboBox* combobox){
+    QString name = combobox->currentText();
+    return label == name? true: false;
 }
 
 bool CreaterFilesPage::createDir(QString path){
@@ -163,9 +173,24 @@ std::vector<std::string> CreaterFilesPage::splitString(const std::string& str, c
     return std::vector<std::string>(begin, end);
 }
 
-void CreaterFilesPage::createLoopFiles(std::vector<std::string> list){
-    for(std::string item: list){
-        createFile(QString::fromStdString(item));
+void CreaterFilesPage::creteLoopFileOrDir(std::vector<std::string> list, bool itsFile){
+    for(std::string path: list){
+        bool result = itsFile? createFile(QString::fromStdString(path)): createDir(QString::fromStdString(path));
+        if(result){
+            globalVectorMakection.push_back(path);
+        }else{
+            globalVectorNotMakeAction.push_back(path);
+        }
+    }
+}
+void CreaterFilesPage::deleteLoopFileOrDir(std::vector<std::string> list, bool itsFile){
+    for(std::string path: list){
+        bool result = itsFile? deleteFile(QString::fromStdString(path)): deleteDir(QString::fromStdString(path));
+        if(result){
+            globalVectorMakection.push_back(path);
+        }else{
+            globalVectorNotMakeAction.push_back(path);
+        }
     }
 }
 
@@ -177,10 +202,24 @@ void CreaterFilesPage::on_btnAction_clicked()
     }
 
     std::vector<std::string> vectorSplit = splitString(editText.toStdString(), "\n");
-    if(checkBoxActivate("Create")){
-        createLoopFiles(vectorSplit);
-    }else{
-
+    if(validateCombobox("File", ui->type_combobox)){
+        if(validateCombobox("Create", ui->comboBoxOpt)){
+            creteLoopFileOrDir(vectorSplit, true);
+        }else{
+            deleteLoopFileOrDir(vectorSplit, true);
+        }
     }
-}
+    else{
+        if(validateCombobox("Create", ui->comboBoxOpt)){
+            creteLoopFileOrDir(vectorSplit, false);
+        }else{
+            deleteLoopFileOrDir(vectorSplit, false);
+        }
+    }
 
+    ResultPage *resultPage = new ResultPage();
+    connect(resultPage, &ResultPage::destroyed, resultPage, &QObject::deleteLater);
+    resultPage->show();
+    globalVectorMakection.clear();
+    globalVectorNotMakeAction.clear();
+}

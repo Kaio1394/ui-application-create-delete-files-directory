@@ -1,10 +1,12 @@
 #ifndef CREATERFILESPAGE_H
 #define CREATERFILESPAGE_H
 
+#include "qcombobox.h"
 #include <QMainWindow>
 #include <vector>
 
 namespace Ui {
+
 class CreaterFilesPage;
 }
 
@@ -21,9 +23,10 @@ public:
     bool deleteDir(QString);
     void writeStatusBar(QString, QString);
     bool checkBoxActivate(QString);
-    std::vector<std::string> splitString(const std::string& str, const std::string& delimiter);
-    void deleteLoopFiles(std::vector<std::string>);
-    void createLoopFiles(std::vector<std::string>);
+    std::vector<std::string> splitString(const std::string& str, const std::string& delimiter);  
+    void creteLoopFileOrDir(std::vector<std::string>, bool);
+    void deleteLoopFileOrDir(std::vector<std::string>, bool);
+    bool validateCombobox(QString, QComboBox*);
 private slots:
     void on_create_clicked();
 

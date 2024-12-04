@@ -10,16 +10,21 @@ CONFIG += c++17
 
 SOURCES += \
     createrfilespage.cpp \
+    global_data.cpp \
     main.cpp \
-    loginwindow.cpp
+    loginwindow.cpp \
+    resultpage.cpp
 
 HEADERS += \
     createrfilespage.h \
-    loginwindow.h
+    global_data.h \
+    loginwindow.h \
+    resultpage.h
 
 FORMS += \
     createrfilespage.ui \
-    loginwindow.ui
+    loginwindow.ui \
+    resultpage.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -28,5 +33,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES +=
 
-DISTFILES += \
-    ../../../../Arquivos/bot.ico
+VERSION = 1.0.0
+DEFINES += APP_VERSION=\\\"$$VERSION\\\"
+

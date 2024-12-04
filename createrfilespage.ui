@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>521</width>
-    <height>342</height>
+    <width>447</width>
+    <height>334</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -386,6 +386,20 @@
            </widget>
           </item>
           <item>
+           <widget class="QComboBox" name="type_combobox">
+            <item>
+             <property name="text">
+              <string>File</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Directory</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item>
            <spacer name="horizontalSpacer_13">
             <property name="orientation">
              <enum>Qt::Orientation::Horizontal</enum>
@@ -418,7 +432,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>521</width>
+     <width>447</width>
      <height>21</height>
     </rect>
    </property>
