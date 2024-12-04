@@ -47,6 +47,23 @@ The **Delete** tab allows users to delete files or directories.
 
 ---
 
+### **3. Multiply Tab**
+
+The **Multiply** tab allows users to delete/create multiplies files or directories.
+
+#### **Components:**
+- **Label:** *"Path"*: Indicates the path input field.
+- **Edit Text:** Input the paths of the file or directory to be deleted.
+- **Combobox:**
+  - **File:** Select to delete a file.
+  - **Directory:** Select to delete a directory.
+- **Combobox:**
+  - **Create:** Select to create a files/dirs.
+  - **Delete:** Select to delete a files/dirs.
+- **Button:** *"Send"* to execute the action.
+
+---
+
 ## **Setup**
 
 1. Clone the repository:
