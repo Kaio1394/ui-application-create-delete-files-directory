@@ -8,6 +8,7 @@ int main(int argc, char *argv[])
     // a.setStyleSheet("QWidget {"
     //                 "background-color: #808080;"  // Cor de fundo suave (cinza claro)
     //                 "}");
+    a.setWindowIcon(QIcon(":/icons/Folder-icon.ico"));
     CreaterFilesPage w;
     w.setWindowTitle("Create Files");
     w.show();
